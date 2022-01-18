@@ -1,13 +1,13 @@
 import "./App.css";
 
 // Components
-import Result from "./components/result";
+import Search from "./components/search";
 
 function App() {
   return (
     <div className="">
 
-      <Result />
+      <Search />
 
     </div>
   );

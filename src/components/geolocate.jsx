@@ -2,12 +2,12 @@
 import { useState, useEffect } from "react"
 import Result from "./result";
 
-const GeoLocate = ({apiKey}) => {
+const GeoLocate = ({ apiKey }) => {
 
     const [data, setData] = useState({});
     const [lat, setLat] = useState(0);
     const [lon, setLon] = useState(0);
-    
+
     const fetchData = async () => {
         window.navigator.geolocation.getCurrentPosition((position) => {
             setLat(position.coords.latitude);
@@ -15,27 +15,27 @@ const GeoLocate = ({apiKey}) => {
             console.log(position);
         })
         const res = await fetch(`https://api.openweathermap.org/data/2.5/weather?units=metric&lat=${lat}&lon=${lon}&appid=${apiKey}`);
-        const data = await res.json();
 
-        const { temp, humiditym, pressure } = data.main;
+        const data = await res.json();
+        const { temp, temp_min, temp_max } = data.main;
         const { icon, main: weathermood } = data.weather[0];
         const { name } = data;
 
         const myWeatherInfo = {
-            temp, humiditym, pressure, weathermood, name, icon
+            temp, temp_min, temp_max, weathermood, name, icon
         }
         setData(myWeatherInfo);
         console.log(data);
     }
 
-    
+
     useEffect(() => {
         fetchData();
     }, [lat, lon])
-    
+
     return (
         <>
-            <Result data={data} />           
+            <Result data={data} />
         </>
     )
 

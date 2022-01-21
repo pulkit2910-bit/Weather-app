@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import Result from './result'
 import GeoLocate from './geolocate'
 import Error from "./Error";
+import './search.css'
 
 // API KEY
 const apiKey = "2bd544c159fbdc5021369d273d9cc98a";
@@ -76,8 +77,8 @@ const Search = () => {
                 error === true ? <Error /> :
 
                 <div className="row justify-content-center">
-                    <div className="col-md-6 col-lg-4 col-sm-12">
-                        <div className="card bg-dark text-white text-center border-0 overflow-auto">
+                    <div className="col-md-6 col-lg-4 col-sm-12 m-0 imgStyle">
+                        <div className="card bg-dark text-white text-center border-0">
                             <img src={`https://source.unsplash.com/600x900/?${data.weathermood}`} className="card-img image-responsive" alt="..." />
                             <div className="card-img-overlay">
                                 <form onSubmit={handleSubmit}>
